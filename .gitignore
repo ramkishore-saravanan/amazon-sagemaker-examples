@@ -13,4 +13,3 @@ tox.ini
 *.pt
 *.onnx
 *.plan
-*.trt
