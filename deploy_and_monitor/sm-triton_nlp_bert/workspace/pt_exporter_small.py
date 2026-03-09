@@ -12,7 +12,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     # Load the BERT model with TorchScript support enabled
-    model = BertModel.from_pretrained("bert-base-uncased", torchscript=True)
+    model = BertModel.from_pretrained("bert-base-uncased")
 
     # Modify the model to return only the [CLS] token embedding
     class BertClsHead(torch.nn.Module):

@@ -8,7 +8,8 @@ if __name__ == "__main__":
     parser.add_argument("--save", default="model.onnx")
     args = parser.parse_args()
 
-    model = BertModel.from_pretrained("bert-base-uncased", torchscript=True)
+    model = BertModel.from_pretrained("bert-base-uncased")
+    model.config._attn_implementation = "eager"
 
     bs = 1
     seq_len = 128
@@ -19,7 +20,7 @@ if __name__ == "__main__":
         dummy_inputs,
         args.save,
         export_params=True,
-        opset_version=10,
+        opset_version=18,
         input_names=["token_ids", "attn_mask"],
         output_names=["output"],
         dynamic_axes={"token_ids": [0, 1], "attn_mask": [0, 1], "output": [0]},

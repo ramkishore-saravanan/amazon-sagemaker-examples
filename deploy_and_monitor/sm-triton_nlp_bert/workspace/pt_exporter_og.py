@@ -11,7 +11,8 @@ if __name__ == "__main__":
     parser.add_argument("--save", default="model.pt")
     args = parser.parse_args()
 
-    model = BertModel.from_pretrained("bert-base-uncased", torchscript=True)
+    model = BertModel.from_pretrained("bert-base-uncased")
+    model.config._attn_implementation = "eager"
 
     bs = 128
     seq_len = 128

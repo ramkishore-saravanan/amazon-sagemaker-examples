@@ -12,4 +12,8 @@ tox.ini
 **/sagemaker-pipelines/step-decorator/**/quick-start/**/dummy_train.py
 *.pt
 *.onnx
+*.onnx.data
 *.plan
+log.txt
+*dy.txt
+
