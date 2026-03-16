@@ -1,6 +1,6 @@
 name: "bert"
 platform: "tensorrt_plan"
-max_batch_size: 8
+max_batch_size: 16
 input [
   {
     name: "token_ids"

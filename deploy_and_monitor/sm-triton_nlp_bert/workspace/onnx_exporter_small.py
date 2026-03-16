@@ -22,7 +22,7 @@ if __name__ == "__main__":
             outputs = self.bert(input_ids=input_ids, attention_mask=attention_mask)
             # Extract the output for the [CLS] token (first token is at index 0)
             cls_token_output = outputs[0][:, 0, :].float()
-            return (cls_token_output)
+            return cls_token_output
 
     # Replace the original model with the modified version
     device = "cuda" if torch.cuda.is_available() else "cpu"
@@ -32,14 +32,17 @@ if __name__ == "__main__":
 
     bs = 2
     seq_len = 128
-    dummy_inputs = (torch.randint(1000, (bs, seq_len)), torch.zeros(bs, seq_len, dtype=torch.int))
-
+    dummy_inputs = (
+        torch.randint(1000, (1,128), dtype=torch.long).to(device),
+        torch.ones(1,128, dtype=torch.long).to(device)
+    )
+    
     torch.onnx.export(
         model,
         dummy_inputs,
         args.save,
         export_params=True,
-        opset_version=18,
+        opset_version=17,
         input_names=["token_ids", "attn_mask"],
         output_names=["output"],
       dynamic_axes= {
