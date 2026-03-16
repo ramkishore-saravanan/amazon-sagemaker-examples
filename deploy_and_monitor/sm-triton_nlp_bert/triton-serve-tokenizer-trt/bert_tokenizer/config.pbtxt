@@ -1,0 +1,22 @@
+name: "bert_tokenizer"
+platform: "python"
+max_batch_size: 0
+input [
+  {
+    name: "text"
+    data_type: TYPE_BYTES
+    dims: [-1]
+  }
+]
+output [
+  {
+    name: "token_ids"
+    data_type: TYPE_INT32
+    dims: [-1, 128]
+  },
+  {
+    name: "attn_mask"
+    data_type: TYPE_INT32
+    dims: [-1, 128]
+  }
+]

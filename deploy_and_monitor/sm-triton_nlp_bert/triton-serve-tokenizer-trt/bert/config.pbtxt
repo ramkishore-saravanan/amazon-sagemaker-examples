@@ -1,27 +1,26 @@
 name: "bert"
 platform: "tensorrt_plan"
-max_batch_size: 8
+max_batch_size: 0
 input [
   {
     name: "token_ids"
     data_type: TYPE_INT32
-    dims: [128]
+    dims: [-1, -1]
   },
   {
     name: "attn_mask"
     data_type: TYPE_INT32
-    dims: [128]
+    dims: [-1, -1]
   }
 ]
 output [
   {
     name: "output"
     data_type: TYPE_FP32
-    dims: [768]
+    dims: [-1, 768]
   }
 ]
 instance_group {
   count: 1
   kind: KIND_GPU
 }
-
