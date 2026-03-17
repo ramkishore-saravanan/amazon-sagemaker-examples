@@ -1,22 +1,26 @@
-name: "bert_tokenizer"
+name: "tokenizer"
 backend: "python"
-max_batch_size: 0
+max_batch_size: 32
+
+
+
 input [
   {
     name: "text"
     data_type: TYPE_STRING
-    dims: [-1, 1]
+    dims: [1]
   }
 ]
+
 output [
   {
     name: "token_ids"
     data_type: TYPE_INT32
-    dims: [-1, 128]
+    dims: [128]
   },
   {
     name: "attn_mask"
     data_type: TYPE_INT32
-    dims: [-1, 128]
+    dims: [128]
   }
 ]

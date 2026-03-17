@@ -16,4 +16,6 @@ tox.ini
 *.plan
 log.txt
 *dy.txt
+model.tar.gz
+
 
