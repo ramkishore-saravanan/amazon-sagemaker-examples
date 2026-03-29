@@ -20,10 +20,3 @@ output [
     dims: [-1, 128]
   }
 ]
-
-instance_group [
-  {
-    count: 4
-    kind: KIND_CPU
-  }
-]
