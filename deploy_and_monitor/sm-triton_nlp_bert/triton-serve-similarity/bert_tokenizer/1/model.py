@@ -12,7 +12,7 @@ class TritonPythonModel:
     def initialize(self, args):
         model_dir = os.path.dirname(os.path.abspath(__file__))
         self.tokenizer = Tokenizer.from_file(os.path.join(model_dir, "tokenizer.json"))
-        self.max_len = 30
+        self.max_len = 64
 
     def execute(self, requests):
         responses = []
